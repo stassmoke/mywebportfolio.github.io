@@ -1,0 +1,680 @@
+@import "vars"
+@import "fonts"
+@import "libs"
+
+::placeholder
+  color: #666
+
+::selection
+  background-color: #fff
+  color: #fff
+
+html, body
+  height: 100%
+
+body
+  font-size: 16px
+  min-width: 320px
+  position: relative
+  line-height: 1.65
+  font-family: $default-font
+  overflow-x: hidden
+  background: linear-gradient(to right, rgba(239, 238, 233, 1) 50%, rgba(238, 235, 223, 1) 50%)
+  input, textarea
+    border: #666 1px solid
+    outline: none
+    &:focus:required:invalid
+      border-color: red
+    &:required:valid
+      border-color: green
+
+.img-responsive
+  display: block
+  max-width: 100%
+  height: auto
+
+.text-center
+  text-align: center
+
+h1
+  font-size: 63px
+  margin: 70px 0
+  text-transform: uppercase
+  text-align: center
+  &:before
+    content: ' — '
+    color: rgba(55, 62, 66, .5)
+  &:after
+    content: ' — '
+    color: rgba(55, 62, 66, .5)
+
+h2
+  font-size: 35px
+  margin-bottom: 40px
+  color: $dark
+  text-align: center
+  text-transform: uppercase
+  &:before
+    content: ' — '
+    color: rgba(55, 62, 66, .5)
+  &:after
+    content: ' — '
+    color: rgba(55, 62, 66, .5)
+
+.links
+  color: #6da3bd
+  &:hover
+    color: #6da3bd
+    text-decoration: none
+
+.accent
+  color: $blue
+
+.buttons
+  width: 250px
+  height: 60px
+  background-color: $blue
+  color: #fff
+  display: inline-block
+  padding: 18px
+  cursor: pointer
+  font-weight: 500
+  transition: .3s all
+  &:hover
+    background-color: $blue_hover
+
+.buttons_auth
+  width: 250px
+  height: 60px
+  display: inline-block
+  background-color: transparent
+  border: 1px solid #ffffff
+  border-radius: 6px
+  font-weight: 500
+  color: #fff
+  padding: 18px
+  cursor: pointer
+  transition: .3s all
+  &:hover
+    background-color: #fff
+    color: $blue
+.upper_text
+  text-transform: uppercase
+header
+  background: url("/img/moutains.png") top
+  background-size: cover
+  padding-top: 25px
+  height: 600px
+  clip-path: polygon(100% 0%, 100% 70%, 50% 100%, 0% 70%, 0% 0%)
+  .top_item
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    padding: 0 34px 0 34px
+    margin-bottom: 100px
+    .items_links-vertical
+      padding: 0
+      margin: 0
+      .link
+        display: inline-block
+        margin-right: 20px
+
+        &:last-child
+          margin-right: 0
+        .linked
+          text-decoration: none
+          font-size: 25px
+          color: rgba(255, 255, 255, .5)
+          transition: .3s all
+          &:hover
+            color: #fff
+    .hamburger-right
+      .head-items_hamburger
+        font-size: 35px
+        color: #fff
+
+  .info
+    .photo
+      .my_img
+        width: 120px
+        height: 120px
+        display: inline-block
+        border-radius: 50%
+        background: url("/img/test.jpg")
+        background-size: cover
+    .me
+      color: #fff
+      h2
+        font-size: 35px
+        margin-bottom: 0
+    .down
+      .arrow_down
+        color: rgba(255, 255, 255, .6)
+        font-size: 35px
+        line-height: 210px
+        transition: .3s all
+        &:hover
+          color: #fff
+
+.about
+  padding-bottom: 40px
+  &-left
+    display: flex
+    flex-direction: row
+    &_ab
+      h1
+        margin: 0
+    &_im
+      width: 50%
+      margin: 20px 0 0 45px
+  ///////PROGRESS-BAR/////////////
+  &-right
+    .progress_h3-fe, .progress_h3-wf
+      color: $dark_font
+      font-size: 28px
+      text-align: center
+    .my_progress-fe
+      display: flex
+      flex-direction: row
+      justify-content: center
+      flex-wrap: wrap
+      align-content: stretch
+    ////////HTML///////////
+    $diameter: 190px
+    $border: 22px
+    $progress: 310 // Угол
+    .html-progress
+      position: relative
+      width: $diameter
+      height: $diameter
+      border-radius: 50%
+      background-color: $blue
+      &::before
+        position: absolute
+        content: ''
+        @if $progress > 180
+          background-color: $blue
+
+        @if $progress <= 180
+          background-color: $gray
+
+        width: $diameter
+        height: $diameter
+        border-radius: 50%
+        clip: rect(0, #{$diameter/2}, $diameter, 0)
+        transform-origin: 50% 50%
+        @if $progress <= 180
+          transform: rotate(#{180 + $progress}deg)
+
+        @if $progress > 180
+          transform: rotate(#{180 + $progress - 180}deg)
+        z-index: 1
+      &::after
+        position: absolute
+        content: ''
+        background-color: $gray
+        width: $diameter
+        height: $diameter
+        border-radius: 50%
+        clip: rect(0, #{$diameter/2}, $diameter, 0)
+        transform-origin: 50% 50%
+        transform: rotate(0deg)
+    //////////CSS/////////
+    $diameter: 190px
+    $border: 22px
+    $progress: 130 // Угол
+    .css-progress
+      position: relative
+      width: $diameter
+      height: $diameter
+      border-radius: 50%
+      background-color: $blue
+      &::before
+        position: absolute
+        content: ''
+        @if $progress > 180
+          background-color: $blue
+
+        @if $progress <= 180
+          background-color: $gray
+
+        width: $diameter
+        height: $diameter
+        border-radius: 50%
+        clip: rect(0, #{$diameter/2}, $diameter, 0)
+        transform-origin: 50% 50%
+        @if $progress <= 180
+          transform: rotate(#{180 + $progress}deg)
+
+        @if $progress > 180
+          transform: rotate(#{180 + $progress - 180}deg)
+        z-index: 1
+      &::after
+        position: absolute
+        content: ''
+        background-color: $gray
+        width: $diameter
+        height: $diameter
+        border-radius: 50%
+        clip: rect(0, #{$diameter/2}, $diameter, 0)
+        transform-origin: 50% 50%
+        transform: rotate(0deg)
+    ///////SASS/////////
+    $diameter: 190px
+    $border: 22px
+    $progress: 180 // Угол
+
+    .sass-progress
+      position: relative
+      width: $diameter
+      height: $diameter
+      border-radius: 50%
+      background-color: $blue
+      &::before
+        position: absolute
+        content: ''
+        @if $progress > 180
+          background-color: $blue
+
+        @if $progress <= 180
+          background-color: $gray
+
+        width: $diameter
+        height: $diameter
+        border-radius: 50%
+        clip: rect(0, #{$diameter/2}, $diameter, 0)
+        transform-origin: 50% 50%
+        @if $progress <= 180
+          transform: rotate(#{180 + $progress}deg)
+
+        @if $progress > 180
+          transform: rotate(#{180 + $progress - 180}deg)
+        z-index: 1
+      &::after
+        position: absolute
+        content: ''
+        background-color: $gray
+        width: $diameter
+        height: $diameter
+        border-radius: 50%
+        clip: rect(0, #{$diameter/2}, $diameter, 0)
+        transform-origin: 50% 50%
+        transform: rotate(0deg)
+    ///////JS///////////
+    $diameter: 190px
+    $border: 22px
+    $progress: 211 // Угол
+    .jq-progress
+      position: relative
+      width: $diameter
+      height: $diameter
+      border-radius: 50%
+      background-color: $blue
+      &::before
+        position: absolute
+        content: ''
+        @if $progress > 180
+          background-color: $blue
+
+        @if $progress <= 180
+          background-color: $gray
+
+        width: $diameter
+        height: $diameter
+        border-radius: 50%
+        clip: rect(0, #{$diameter/2}, $diameter, 0)
+        transform-origin: 50% 50%
+        @if $progress <= 180
+          transform: rotate(#{180 + $progress}deg)
+
+        @if $progress > 180
+          transform: rotate(#{180 + $progress - 180}deg)
+        z-index: 1
+      &::after
+        position: absolute
+        content: ''
+        background-color: $gray
+        width: $diameter
+        height: $diameter
+        border-radius: 50%
+        clip: rect(0, #{$diameter/2}, $diameter, 0)
+        transform-origin: 50% 50%
+        transform: rotate(0deg)
+    ///////BOOTSTRAP//////////
+    $diameter: 190px
+    $border: 22px
+    $progress: 150 // Угол
+    .bs-progress
+      position: relative
+      width: $diameter
+      height: $diameter
+      border-radius: 50%
+      background-color: $blue
+      &::before
+        position: absolute
+        content: ''
+        @if $progress > 180
+          background-color: $blue
+
+        @if $progress <= 180
+          background-color: $gray
+
+        width: $diameter
+        height: $diameter
+        border-radius: 50%
+        clip: rect(0, #{$diameter/2}, $diameter, 0)
+        transform-origin: 50% 50%
+        @if $progress <= 180
+          transform: rotate(#{180 + $progress}deg)
+
+        @if $progress > 180
+          transform: rotate(#{180 + $progress - 180}deg)
+        z-index: 1
+      &::after
+        position: absolute
+        content: ''
+        background-color: $gray
+        width: $diameter
+        height: $diameter
+        border-radius: 50%
+        clip: rect(0, #{$diameter/2}, $diameter, 0)
+        transform-origin: 50% 50%
+        transform: rotate(0deg)
+    ////////ANGULAR////////////
+    $diameter: 190px
+    $border: 22px
+    $progress: 310 // Угол
+    .ang-progress
+      position: relative
+      width: $diameter
+      height: $diameter
+      border-radius: 50%
+      background-color: $blue
+      &::before
+        position: absolute
+        content: ''
+        @if $progress > 180
+          background-color: $blue
+
+        @if $progress <= 180
+          background-color: $gray
+
+        width: $diameter
+        height: $diameter
+        border-radius: 50%
+        clip: rect(0, #{$diameter/2}, $diameter, 0)
+        transform-origin: 50% 50%
+        @if $progress <= 180
+          transform: rotate(#{180 + $progress}deg)
+
+        @if $progress > 180
+          transform: rotate(#{180 + $progress - 180}deg)
+        z-index: 1
+      &::after
+        position: absolute
+        content: ''
+        background-color: $gray
+        width: $diameter
+        height: $diameter
+        border-radius: 50%
+        clip: rect(0, #{$diameter/2}, $diameter, 0)
+        transform-origin: 50% 50%
+        transform: rotate(0deg)
+    .html-progress, .css-progress, .jq-progress, .bs-progress, .ang-progress, .sass-progress
+      position: relative
+      display: inline-block
+      margin: 15px
+      .center
+        position: absolute
+        top: $border
+        left: $border
+        width: #{$diameter - 2 * $border}
+        height: #{$diameter - 2 * $border}
+        background-color: #eeecdf
+        border-radius: 50%
+        z-index: 2
+        display: flex
+        justify-content: center
+        align-items: center
+        .progress-text
+          color: $blue
+          text-align: center
+    //////progress-wf///////////
+    .my_progress-wf
+      display: flex
+      flex-direction: row
+      justify-content: center
+      flex-wrap: wrap
+      align-content: stretch
+      ////////GIT///////////
+      $diameter: 190px
+      $border: 22px
+      $progress: 210 // Угол
+      .git-progress
+        position: relative
+        width: $diameter
+        height: $diameter
+        border-radius: 50%
+        background-color: $blue
+        &::before
+          position: absolute
+          content: ''
+          @if $progress > 180
+            background-color: $blue
+          @if $progress <= 180
+            background-color: $gray
+          width: $diameter
+          height: $diameter
+          border-radius: 50%
+          clip: rect(0, #{$diameter/2}, $diameter, 0)
+          transform-origin: 50% 50%
+          @if $progress <= 180
+            transform: rotate(#{180 + $progress}deg)
+          @if $progress > 180
+            transform: rotate(#{180 + $progress - 180}deg)
+          z-index: 1
+        &::after
+          position: absolute
+          content: ''
+          background-color: $gray
+          width: $diameter
+          height: $diameter
+          border-radius: 50%
+          clip: rect(0, #{$diameter/2}, $diameter, 0)
+          transform-origin: 50% 50%
+          transform: rotate(0deg)
+      //////////GULP/////////
+      $diameter: 190px
+      $border: 22px
+      $progress: 110 // Угол
+      .gulp-progress
+        position: relative
+        width: $diameter
+        height: $diameter
+        border-radius: 50%
+        background-color: $blue
+        &::before
+          position: absolute
+          content: ''
+          @if $progress > 180
+            background-color: $blue
+          @if $progress <= 180
+            background-color: $gray
+          width: $diameter
+          height: $diameter
+          border-radius: 50%
+          clip: rect(0, #{$diameter/2}, $diameter, 0)
+          transform-origin: 50% 50%
+          @if $progress <= 180
+            transform: rotate(#{180 + $progress}deg)
+          @if $progress > 180
+            transform: rotate(#{180 + $progress - 180}deg)
+          z-index: 1
+        &::after
+          position: absolute
+          content: ''
+          background-color: $gray
+          width: $diameter
+          height: $diameter
+          border-radius: 50%
+          clip: rect(0, #{$diameter/2}, $diameter, 0)
+          transform-origin: 50% 50%
+          transform: rotate(0deg)
+      ///////BOWER/////////
+      $diameter: 190px
+      $border: 22px
+      $progress: 130 // Угол
+      .bower-progress
+        position: relative
+        width: $diameter
+        height: $diameter
+        border-radius: 50%
+        background-color: $blue
+        &::before
+          position: absolute
+          content: ''
+          @if $progress > 180
+            background-color: $blue
+          @if $progress <= 180
+            background-color: $gray
+          width: $diameter
+          height: $diameter
+          border-radius: 50%
+          clip: rect(0, #{$diameter/2}, $diameter, 0)
+          transform-origin: 50% 50%
+          @if $progress <= 180
+            transform: rotate(#{180 + $progress}deg)
+          @if $progress > 180
+            transform: rotate(#{180 + $progress - 180}deg)
+          z-index: 1
+        &::after
+          position: absolute
+          content: ''
+          background-color: $gray
+          width: $diameter
+          height: $diameter
+          border-radius: 50%
+          clip: rect(0, #{$diameter/2}, $diameter, 0)
+          transform-origin: 50% 50%
+          transform: rotate(0deg)
+      .git-progress, .gulp-progress, .bower-progress
+        position: relative
+        display: inline-block
+        margin: 15px
+        .center
+          position: absolute
+          top: $border
+          left: $border
+          width: #{$diameter - 2 * $border}
+          height: #{$diameter - 2 * $border}
+          background-color: #eeecdf
+          border-radius: 50%
+          z-index: 2
+          display: flex
+          justify-content: center
+          align-items: center
+          .progress-text
+            color: $blue
+            text-align: center
+.contacts
+  background-image: url(/img/water.jpg)
+  .contacts-flex
+    padding: 150px
+    .contact-me
+      width: 550px
+      height: auto
+      background-color: rgba(255, 255, 255, 0.82)
+      margin: 0 auto
+      padding: 15px
+      h2
+        margin: 5px
+      .contacts_skype
+        &:before
+          content: "\f17e"
+          font-family: FontAwesome
+          font-size: 25px
+          color: #50beb6
+          display: inline-block
+          width: 30px
+          height: auto
+      .contacts_email
+        &:before
+          content: '\f0e0'
+          font-family: FontAwesome
+          font-size: 25px
+          color: #50beb6
+          display: inline-block
+          width: 30px
+          height: auto
+      .contacts_telegram
+        &:before
+          content: '\f2c6'
+          font-family: FontAwesome
+          font-size: 25px
+          color: #50beb6
+          display: inline-block
+          width: 30px
+          height: auto
+      .contacts_tell
+        &:before
+          content: '\f10b'
+          font-family: FontAwesome
+          font-size: 25px
+          color: #50beb6
+          display: inline-block
+          width: 30px
+          height: auto
+      .contacts_city
+        &:before
+          content: '\f276'
+          font-family: FontAwesome
+          font-size: 25px
+          color: #50beb6
+          display: inline-block
+          width: 30px
+          height: auto
+  footer
+    background-color: rgba(49, 49, 49, 0.72)
+    padding: 10px 10px
+    p
+      margin: 0
+      padding: 0
+    .footer_top-line
+      display: flex
+      flex-direction: row
+      justify-content: space-between
+      .footer_mnu
+        a
+          padding: 10px 15px
+          display: inline-block
+          color: $gray
+          text-decoration: none
+          &:hover
+            text-decoration: none
+            color: #fff
+      .footer_icn
+        display: flex
+        margin-top: 10px
+        .linked
+          .fab
+            border: 1px solid rgba(178, 178, 178, 0.72)
+            padding: 10px
+            border-radius: 50%
+            margin-right: 10px
+            width: 40px
+            height: 40px
+            vertical-align: middle
+            text-align: center
+            color: rgba(178, 178, 178, 0.72)
+            &:hover
+              background-color: #fff
+              color: rgba(41, 41, 41, 0.63)
+    .footer_btn-line
+      margin-top: 30px
+      color: rgba(178, 178, 178, 0.72)
+      display: flex
+      flex-direction: row
+      justify-content: space-between
+      padding: 0 10px
+@import "media"
+// Always at the end
